@@ -28,7 +28,7 @@
 <script>
 import AnswerCard from '../UI/AnswerCard.vue';
 export default {
-  inject: ['choosedQuiz'],
+  props: ['selectedQuiz'],
   components: {
     AnswerCard
   },

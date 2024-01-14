@@ -40,11 +40,6 @@
 
 <script>
 export default {
-  provide() {
-    return{
-      choosedQuiz: this.quizNr,
-    };
-  },
   data() {
     return {
       quizNr: '1',
@@ -53,8 +48,7 @@ export default {
   },
   methods: {
     chooseQuest(nr) {
-      this.dsadas = nr;
-      console.log(this.choosedQuest)
+      this.$emit('selectQuiz', nr)
     }
   }
 }
