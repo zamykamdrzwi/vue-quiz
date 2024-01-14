@@ -1,24 +1,24 @@
 <template>
   <div>
     <the-card>
-      <div class="card-header border-0">Question 1</div>
+      <div class="card-header border-0">Question {{ nextQuestion+1 }}/{{ questions[this.selectedQuiz].length }}</div>
       <div class="card-body">
         <div class="card-title d-flex justify-content-center fs-2 pb-3">
-          {{ questions[selectedQuiz][0].quest }}
+          {{ questions[selectedQuiz][nextQuestion].quest }}
         </div>
         <div class="row  gap-3">
           <answer-card
             class="col-xl-3 m-auto"
-            @click="checkAnswer(1)">
-            {{ questions[selectedQuiz][0].answer1 }}</answer-card>
+            @click="checkAnswer(0, questions[selectedQuiz][nextQuestion].correctAnswer)">
+            {{ questions[selectedQuiz][nextQuestion].answers[0] }}</answer-card>
           <answer-card
             class="col-xl-3 m-auto"
-            @click="checkAnswer(2)">
-            {{ questions[selectedQuiz][0].answer2 }}</answer-card>
+            @click="checkAnswer(1, questions[selectedQuiz][nextQuestion].correctAnswer)">
+            {{ questions[selectedQuiz][nextQuestion].answers[1] }}</answer-card>
           <answer-card
             class="col-xl-3 m-auto"
-            @click="checkAnswer(3)">
-            {{ questions[selectedQuiz][0].answer3 }}</answer-card>        
+            @click="checkAnswer(2, questions[selectedQuiz][nextQuestion].correctAnswer)">
+            {{ questions[selectedQuiz][nextQuestion].answers[2] }}</answer-card>        
         </div>
       </div>
     </the-card>
@@ -34,49 +34,76 @@ export default {
   },
   data() {
     return {
-      xd: 'das',
+      nextQuestion: 0,
       questions: [
         [
           {
             id: 1,
-            quest: 'Example questionpadding-left: 10px !important;padding-left: 10px !important;padding-left: 10px !important;',
-            answer1: 'Answer One  Answer OneAnswer OneAnswer OneAnswer OneAnswer OneAnswer OneAnswer OneAnswer OneAnswer OneAnswer One',
-            answer2: 'Answer Two padding-left: 10px !important; niger niger niger niger niger niger',
-            answer3: 'Answer Three nigger nigger nigger nigger nigger nigger nigger nigger nigger nigger nigger ',
+            quest: 'Example question',
+            answers: [
+              'Answer One',
+              'Answer Two',
+              'Answer Three',
+            ],
+            correctAnswer: 1
+          },
+          {
+            id: 2,
+            quest: 'Example question 2',
+            answers: [
+              'Answer One',
+              'Answer Two',
+              'Answer Three',
+            ],
+            correctAnswer: 1
+          },
+        ],
+        [
+        {
+            id: 1,
+            quest: 'Example question 34',
+            answers: [
+              'Answer One',
+              'Answer Two',
+              'Answer Three',
+            ],
             correctAnswer: 2
           },
           {
             id: 2,
-            quest: 'Second example question',
-            answer1: 'Answer One',
-            answer2: 'Answer Two',
-            answer3: 'Answer Three',
-            correctAnswer: 1
-          }
-        ],
-        [
-          {
-            id: 1,
-            quest: 'Tab2 Second example question',
-            answer1: 'Answer One',
-            answer2: 'Answer Two',
-            answer3: 'Answer Three',
+            quest: 'Example question 321321',
+            answers: [
+              'Answer One',
+              'Answer Two',
+              'Answer Three',
+            ],
             correctAnswer: 1
           },
-          {
-            id: 2,
-            quest: 'Tab2 dsadsadasSecond example question',
-            answer1: 'Answer One',
-            answer2: 'Answer Two',
-            answer3: 'Answer Three',
-            correctAnswer: 1
-          }
         ]
       ],
     };
   },
   methods: {
-
+    checkAnswer(nr, answer){
+      console.log(nr);
+      //console.log(`quiz ${quiz}`);
+      console.log(`answer ${answer}`);
+      if(nr === answer){
+        console.log('Dobrze');
+        this.goToNextQuestion();
+      }else{
+        console.log('Źle');
+        this.goToNextQuestion();
+      }
+    },
+    goToNextQuestion(){
+      if(this.nextQuestion+1 < this.questions[this.selectedQuiz].length){
+        this.nextQuestion++;
+      }else{
+        console.log('Koniec');
+        return;
+      }
+    }
   },
 }
 </script>

@@ -15,7 +15,7 @@ export default {
   },
   data() {
     return {
-      selectQuizBox: 0
+      selectQuizBox: 0 
     };
   },
   methods: {
