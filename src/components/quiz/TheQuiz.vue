@@ -1,22 +1,33 @@
 <template>
   <div>
     <the-alert v-if="openAlert">
-      <div class="card-header fs-3">{{ alertHeader }}</div>
+      <div class="card-header fs-3">
+        Congratulations, you have completed the {{ quizName[selectedQuiz] }}!
+      </div>
       <div class="card-body">
         <div>
           <font-awesome-icon :icon="['fas', 'rocket']" />
           <span> Your Score: {{ score }}/{{ questions[this.selectedQuiz].length }}</span>
         </div>
-        <div class="d-flex justify-content-center mt-3">
+        <div class="d-flex justify-content-center m-auto mt-3 gap-3">
           <answer-card
             @click="closeAlert">
             Try Again!
+          </answer-card>
+          <answer-card
+            @click="checkAllAnswers">
+            Check The Answers!
           </answer-card>
         </div>
       </div>
     </the-alert>
     <the-card>
-      <div class="card-header border-0">Question {{ nextQuestion+1 }}/{{ questions[this.selectedQuiz].length }}</div>
+      <div class="card-header border-0 row">
+        <span class="col-6">Question {{ nextQuestion+1 }}/{{ questions[this.selectedQuiz].length }}</span>
+        <span class="col-6 d-flex justify-content-end">
+          <span>{{ quizName[selectedQuiz] }}</span>
+        </span>
+      </div>
       <div class="card-body">
         <div class="card-title d-flex justify-content-center fs-2 pb-3">
           {{ questions[selectedQuiz][nextQuestion].quest }}
@@ -46,9 +57,12 @@ export default {
   data() {
     return {
       openAlert: false,
-      alertHeader: '',
       score: 0,
       nextQuestion: 0,
+      quizName: [
+        'Quiz 1',
+        'Quiz 2'
+      ],
       questions: [
         [
           {
@@ -99,9 +113,6 @@ export default {
   },
   methods: {
     checkAnswer(nr, answer){
-      console.log(nr);
-      //console.log(`quiz ${quiz}`);
-      console.log(`answer ${answer}`);
       if(nr === answer){
         this.score++;
         this.goToNextQuestion();
@@ -113,10 +124,6 @@ export default {
       if(this.nextQuestion+1 < this.questions[this.selectedQuiz].length){
         this.nextQuestion++;
       }else{
-        this.alertHeader = 'Congratulations, you have completed the quiz!';
-        this.alertBody = `
-        Your Score: 21,
-        dasda: dsa`
         this.openAlert = true;
       }
     },
@@ -124,6 +131,9 @@ export default {
       this.openAlert = false;
       this.score = 0;
       this.nextQuestion = 0;
+    },
+    checkAllAnswers(){
+      this.closeAlert();
     }
   },
   watch: {
@@ -133,7 +143,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-  
-</style>

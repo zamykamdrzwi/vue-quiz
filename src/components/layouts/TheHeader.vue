@@ -2,8 +2,10 @@
   <nav class="navbar navbar-expand-md bg-dark">
     <div class="container">
       <div class="green fs-3">
-        <font-awesome-icon :icon="['far', 'circle-question']" />
-        <span> QUIZ</span>
+        <a href="#" class="nav-link">
+          <font-awesome-icon :icon="['far', 'circle-question']" />
+          <span> QUIZ</span>
+        </a>
       </div>
       <button class="navbar-toggler shadow-none border-0 fs-3" type="button"
         data-bs-toggle="collapse"
@@ -14,9 +16,6 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto gap-3">
-          <li class="nav-item">
-            <a href="#" class="nav-link green">Start Quiz</a>
-          </li>
           <li class="nav-item dropdown">
             <a href="#" class="nav-link green dropdow-toggle"
             data-bs-toggle="dropdown">
@@ -30,7 +29,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link green">Add Question</a>
+            <a href="#" class="nav-link green">Add Quiz</a>
           </li>
         </ul>
       </div>
