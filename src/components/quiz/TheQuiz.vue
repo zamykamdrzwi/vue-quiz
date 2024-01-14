@@ -53,7 +53,7 @@
 
 <script>
 export default {
-  props: ['selectedQuiz'],
+  inject: ['selectedQuiz'],
   data() {
     return {
       openAlert: false,
@@ -113,6 +113,7 @@ export default {
   },
   methods: {
     checkAnswer(nr, answer){
+      console.log(this.selectedQuiz);
       if(nr === answer){
         this.score++;
         this.goToNextQuestion();
