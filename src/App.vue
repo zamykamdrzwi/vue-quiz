@@ -1,37 +1,26 @@
 <template>
   <div>
     <the-header></the-header>
+    <the-quiz></the-quiz>
   </div>
 </template>
 
 <script>
+import TheQuiz from './components/quiz/TheQuiz.vue';
 import TheHeader from './components/layouts/TheHeader.vue';
 export default {
   components: {
-    TheHeader
+    TheHeader,
+    TheQuiz
   },
   data() {
     return {
-      questions: [
-        {
-          id: 1,
-          quest: 'Example question',
-          answer1: 'Answer One',
-          answer2: 'Answer Two',
-          answer3: 'Answer Three',
-          correctAnswer: 2
-        },
-        {
-          id: 1,
-          quest: 'Second example question',
-          answer1: 'Answer One',
-          answer2: 'Answer Two',
-          answer3: 'Answer Three',
-          correctAnswer: 1
-        },
-      ]
+      
     };
   },
+  methods: {
+
+  }
 }
 </script>
 
@@ -42,6 +31,6 @@ body{
   font-family: 'Inter', sans-serif;
 }
 .green{
-  color: #00DC82;
+  color: #00DC82 !important;
 }
 </style>
