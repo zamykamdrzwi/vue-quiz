@@ -24,9 +24,9 @@
             </a>
             <ul class="dropdown-menu dropdown-menu-dark">
               <li><a href="#" class="dropdown-item green"
-                @click="chooseQuest(1)">Quiz 1</a></li>
+                @click="chooseQuest(0)">Quiz 1</a></li>
               <li><a href="#" class="dropdown-item green"
-                @click="chooseQuest(2)">Quiz 2</a></li>
+                @click="chooseQuest(1)">Quiz 2</a></li>
             </ul>
           </li>
           <li class="nav-item">
@@ -40,21 +40,14 @@
 
 <script>
 export default {
-  provide() {
-    return{
-      choosedQuiz: this.quizNr,
-    };
-  },
   data() {
     return {
-      quizNr: '1',
-      dsadas: ''
+
     };
   },
   methods: {
     chooseQuest(nr) {
-      this.dsadas = nr;
-      console.log(this.choosedQuest)
+      this.$emit('selectQuiz', nr);
     }
   }
 }

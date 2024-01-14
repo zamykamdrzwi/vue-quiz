@@ -1,7 +1,7 @@
 <template>
   <div>
-    <the-header></the-header>
-    <the-quiz></the-quiz>
+    <the-header @selectQuiz="checkSelectQuiz"></the-header>
+    <the-quiz :selectedQuiz="selectQuizBox"></the-quiz>
   </div>
 </template>
 
@@ -15,11 +15,13 @@ export default {
   },
   data() {
     return {
-      
+      selectQuizBox: 0
     };
   },
   methods: {
-
+    checkSelectQuiz(nr){
+      this.selectQuizBox = nr;
+    }
   }
 }
 </script>

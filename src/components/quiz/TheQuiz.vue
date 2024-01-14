@@ -4,21 +4,21 @@
       <div class="card-header border-0">Question 1</div>
       <div class="card-body">
         <div class="card-title d-flex justify-content-center fs-2 pb-3">
-          {{ questions[0][0].quest }}
+          {{ questions[selectedQuiz][0].quest }}
         </div>
         <div class="row  gap-3">
           <answer-card
             class="col-xl-3 m-auto"
             @click="checkAnswer(1)">
-            {{ questions[0][0].answer1 }}</answer-card>
+            {{ questions[selectedQuiz][0].answer1 }}</answer-card>
           <answer-card
             class="col-xl-3 m-auto"
             @click="checkAnswer(2)">
-            {{ questions[0][0].answer2 }}</answer-card>
+            {{ questions[selectedQuiz][0].answer2 }}</answer-card>
           <answer-card
             class="col-xl-3 m-auto"
             @click="checkAnswer(3)">
-            {{ questions[0][0].answer3 }}</answer-card>        
+            {{ questions[selectedQuiz][0].answer3 }}</answer-card>        
         </div>
       </div>
     </the-card>
@@ -28,7 +28,7 @@
 <script>
 import AnswerCard from '../UI/AnswerCard.vue';
 export default {
-  inject: ['choosedQuiz'],
+  props: ['selectedQuiz'],
   components: {
     AnswerCard
   },
@@ -76,10 +76,7 @@ export default {
     };
   },
   methods: {
-    checkAnswer(nr) {
-      console.log(nr);
-      console.log(`dsada ${this.choosedQuiz}`)
-    }
+
   },
 }
 </script>
