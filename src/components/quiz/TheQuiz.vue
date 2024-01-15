@@ -32,7 +32,7 @@
         <div class="card-title d-flex justify-content-center fs-2 pb-3">
           {{ questions[selectedQuiz][nextQuestion].quest }}
         </div>
-        <div class="row  gap-3">
+        <div class="row gap-3">
           <answer-card
             class="col-xl-3 m-auto"
             @click="checkAnswer(0, questions[selectedQuiz][nextQuestion].correctAnswer)">
@@ -57,6 +57,7 @@ export default {
   props: ['selectedQuiz'],
   data() {
     return {
+      playerAnswers: [],
       openAlert: false,
       score: 0,
       nextQuestion: 0,
@@ -69,7 +70,7 @@ export default {
   },
   methods: {
     checkAnswer(nr, answer){
-      console.log(this.selectedQuiz);
+      this.playerAnswers.push(nr);
       if(nr === answer){
         this.score++;
         this.goToNextQuestion();
@@ -88,10 +89,20 @@ export default {
       this.openAlert = false;
       this.score = 0;
       this.nextQuestion = 0;
+      this.playerAnswers = [];
     },
     checkAllAnswers(){
-      this.closeAlert();
+      this.openAlert = false;
       this.$emit('slectTab', 'check-answers');
+      this.$emit('currentQuizInfo', 
+        this.selectedQuiz, 
+        this.score,
+        this.quizName[this.selectedQuiz],
+        this.playerAnswers
+      );
+      this.nextQuestion = 0;
+      this.score = 0;
+      this.playerAnswers = [];
     }
   },
   watch: {

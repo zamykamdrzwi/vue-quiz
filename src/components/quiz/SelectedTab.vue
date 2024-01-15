@@ -4,7 +4,9 @@
       <component 
         :is="selectedTab" 
         :selectedQuiz="selectedQuizTab"
-        @slectTab="checkSelectTab">
+        @slectTab="checkSelectTab"
+        @currentQuizInfo="currentQuizData"
+        :quizData="quizInfo">
       </component>
     </keep-alive>
   </div>
@@ -21,12 +23,21 @@ export default {
   },
   data() {
     return {
-      selectedTab: 'the-quiz'
+      selectedTab: 'the-quiz',
+      quizInfo: ''
     };
   },
   methods: {
     checkSelectTab(value){
       this.selectedTab = value;
+    },
+    currentQuizData(selectedQuiz, score, quizName, playerAnswers) {
+      this.quizInfo = {
+        selectedQuiz: selectedQuiz,
+        score: score,
+        quizName: quizName,
+        playerAnswers: playerAnswers
+      };
     }
   }
 }
