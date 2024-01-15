@@ -52,6 +52,7 @@
 </template>
 
 <script>
+import questionsTab from './questions.json';
 export default {
   props: ['selectedQuiz'],
   data() {
@@ -63,52 +64,7 @@ export default {
         'Quiz 1',
         'Quiz 2'
       ],
-      questions: [
-        [
-          {
-            id: 1,
-            quest: 'Example question',
-            answers: [
-              'Answer One',
-              'Answer Two',
-              'Answer Three',
-            ],
-            correctAnswer: 1
-          },
-          {
-            id: 2,
-            quest: 'Example question 2',
-            answers: [
-              'Answer One',
-              'Answer Two',
-              'Answer Three',
-            ],
-            correctAnswer: 1
-          },
-        ],
-        [
-        {
-            id: 1,
-            quest: 'Example question 34',
-            answers: [
-              'Answer One',
-              'Answer Two',
-              'Answer Three',
-            ],
-            correctAnswer: 2
-          },
-          {
-            id: 2,
-            quest: 'Example question 321321',
-            answers: [
-              'Answer One',
-              'Answer Two',
-              'Answer Three',
-            ],
-            correctAnswer: 1
-          },
-        ]
-      ],
+      questions: questionsTab
     };
   },
   methods: {
