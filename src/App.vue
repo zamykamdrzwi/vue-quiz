@@ -1,7 +1,7 @@
 <template>
   <div>
     <the-header @selectQuiz="checkSelectQuiz"></the-header>
-    <selected-tab :selectedQuiz="selectQuizBox"></selected-tab>
+    <selected-tab :selectedQuizTab="selectQuizBox"></selected-tab>
   </div>
 </template>
 
@@ -9,11 +9,6 @@
 import SelectedTab from './components/quiz/SelectedTab.vue';
 import TheHeader from './components/layouts/TheHeader.vue';
 export default {
-  provide() {
-    return {
-      selectedQuiz: () => this.selectQuizBox
-    };
-  },
   components: {
     TheHeader,
     SelectedTab,
@@ -26,7 +21,6 @@ export default {
   methods: {
     checkSelectQuiz(nr){
       this.selectQuizBox = nr;
-      console.log(`da ${this.selectQuizBox}`)
     }
   }
 }

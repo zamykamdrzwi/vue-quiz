@@ -53,7 +53,7 @@
 
 <script>
 export default {
-  inject: ['selectedQuiz'],
+  props: ['selectedQuiz'],
   data() {
     return {
       openAlert: false,

@@ -1,7 +1,7 @@
 <template>
   <div>
     <keep-alive>
-      <component :is="selectedTab"></component>
+      <component :is="selectedTab" :selectedQuiz="selectedQuizTab"></component>
     </keep-alive>
   </div>
 </template>
@@ -10,6 +10,7 @@
 import CheckAnswers from './CheckAnswers.vue';
 import TheQuiz from './TheQuiz.vue';
 export default {
+  props: ['selectedQuizTab'],
   components: {
     TheQuiz,
     CheckAnswers
@@ -18,6 +19,6 @@ export default {
     return {
       selectedTab: 'the-quiz'
     };
-  }
+  },
 }
 </script>

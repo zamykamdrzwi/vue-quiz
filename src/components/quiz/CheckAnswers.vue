@@ -7,10 +7,10 @@
 
 <script>
 export default {
-  inject: ['message'],
+  props: ['selectedQuiz'],
   methods: {
     qwe(){
-      console.log(this.message);
+      console.log(this.selectedQuiz);
     }
   }
 }
