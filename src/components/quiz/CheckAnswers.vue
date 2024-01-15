@@ -10,7 +10,7 @@ export default {
   props: ['selectedQuiz'],
   methods: {
     qwe(){
-      console.log(this.selectedQuiz);
+      this.$emit('slectTab', 'the-quiz');
     }
   }
 }

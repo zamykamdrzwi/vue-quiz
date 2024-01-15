@@ -1,7 +1,11 @@
 <template>
   <div>
     <keep-alive>
-      <component :is="selectedTab" :selectedQuiz="selectedQuizTab"></component>
+      <component 
+        :is="selectedTab" 
+        :selectedQuiz="selectedQuizTab"
+        @slectTab="checkSelectTab">
+      </component>
     </keep-alive>
   </div>
 </template>
@@ -20,5 +24,10 @@ export default {
       selectedTab: 'the-quiz'
     };
   },
+  methods: {
+    checkSelectTab(value){
+      this.selectedTab = value;
+    }
+  }
 }
 </script>

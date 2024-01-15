@@ -135,12 +135,13 @@ export default {
     },
     checkAllAnswers(){
       this.closeAlert();
+      this.$emit('slectTab', 'check-answers');
     }
   },
   watch: {
     selectedQuiz(){
       this.nextQuestion = 0;
     }
-  }
+  },
 }
 </script>
