@@ -63,7 +63,8 @@ export default {
       nextQuestion: 0,
       quizName: [
         'Quiz 1',
-        'Quiz 2'
+        'Quiz 2',
+        'Mateuszowy Quiz'
       ],
       questions: questionsTab
     };

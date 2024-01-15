@@ -26,6 +26,8 @@
                 @click="chooseQuest(0)">Quiz 1</a></li>
               <li><a href="#" class="dropdown-item green"
                 @click="chooseQuest(1)">Quiz 2</a></li>
+              <li><a href="#" class="dropdown-item green"
+                @click="chooseQuest(2)">Mateuszowy Quiz</a></li>
             </ul>
           </li>
           <li class="nav-item">
