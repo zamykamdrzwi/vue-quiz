@@ -27,7 +27,6 @@ export default {
       this.tab = value;
     },
     sendQuizName(value) {
-      console.log(value)
       this.tempQuizName = value;
     }
   },

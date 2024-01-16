@@ -23,16 +23,24 @@
 </template>
 
 <script>
+import questionsTab from './questions.json';
 export default {
   data() {
     return {
-      
+
     };
   },
   methods: {
     submitData() {
       const quizName = this.$refs.nameInput.value;
-      this.$emit('newQuizName', quizName);
+      const emptyArray = [];
+      questionsTab.push(emptyArray);
+      const newArrayNr = questionsTab.length-1;
+      const quizData = {
+        quizName: quizName,
+        newArrayNr: newArrayNr
+      }
+      this.$emit('newQuizName', quizData);
       this.$emit('changeTab', 'create-quiz');
     }
   }
