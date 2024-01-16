@@ -6,7 +6,8 @@
         :selectedQuiz="selectedQuizTab"
         @slectTab="checkSelectTab"
         @currentQuizInfo="currentQuizData"
-        :quizData="quizInfo">
+        :quizData="quizInfo"
+        @backToQuiz="backToTheQuiz">
       </component>
     </keep-alive>
   </div>
@@ -26,7 +27,8 @@ export default {
   data() {
     return {
       selectedTab: 'the-quiz',
-      quizInfo: ''
+      quizInfo: '',
+      quiz: ''
     };
   },
   methods: {
@@ -40,12 +42,18 @@ export default {
         quizName: quizName,
         playerAnswers: playerAnswers
       };
+    },
+    backToTheQuiz(value) {
+      this.selectedTab = value.web;
+      this.quiz = value.quiz;
+      console.log(this.selectedQuizTab);
+      // Trzeba dodać aby :selectedQuiz="quiz" ale jeszcze nwm jak
     }
   },
   watch: {
     switchWebsite(){
       this.checkSelectTab(this.switchWebsite.currentPage);
-    }
+    },
   }
 }
 </script>

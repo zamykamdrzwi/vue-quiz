@@ -13,26 +13,29 @@
         </div>
         <input type="text" class="form-control rounded-0 green shadow-none custom-placeholder mb-4"
           ref="nameInput" required placeholder="Enter your question here"
-          v-model="questionValue">
+          v-model="questionValue" :class="{ 'invalid-input': invalidQuestion }">
         <div class="row mb-3">
           <label class="col-md-2 m-auto">Answer 1: </label> 
           <span class="col-md-10">
             <input type="text" class="form-control rounded-0 green shadow-none custom-placeholder"
-              ref="nameInput" required placeholder="Enter your answer here" v-model="answersValue[0]">
+              ref="nameInput" required placeholder="Enter your answer here" v-model="answersValue[0]"
+              :class="{ 'invalid-input': checkAnswersValueTab[0] }">
           </span>
         </div>
         <div class="row mb-3">
           <label class="col-md-2 m-auto">Answer 2: </label> 
           <span class="col-md-10">
             <input type="text" class="form-control rounded-0 green shadow-none custom-placeholder"
-            ref="nameInput" required placeholder="Enter your answer here" v-model="answersValue[1]">            
+            ref="nameInput" required placeholder="Enter your answer here" v-model="answersValue[1]"
+            :class="{ 'invalid-input': checkAnswersValueTab[1] }">            
           </span>
         </div>
         <div class="row mb-3">
           <label class="col-md-2 m-auto">Answer 3: </label>                   
           <span class="col-md-10">
             <input type="text" class="form-control rounded-0 green shadow-none custom-placeholder"
-              ref="nameInput" required placeholder="Enter your answer here" v-model="answersValue[2]">
+              ref="nameInput" required placeholder="Enter your answer here" v-model="answersValue[2]"
+              :class="{ 'invalid-input': checkAnswersValueTab[2] }">
           </span>
         </div>
         <div class="card-title d-flex justify-content-center fs-2 pb-3">
@@ -40,22 +43,27 @@
         </div>
         <div class="row gap-2">
           <answer-card class="col-md-3 m-auto" id="0"
-            @click="goodAnswer(0)" :class="{ 'good-answer': answers[0] }">
+            @click="goodAnswer(0)" :class="{ 'good-answer': answers[0], 'pulsating-card': answerCheck }">
             Answer 1
           </answer-card>
           <answer-card class="col-md-3 m-auto" id="1"
-            @click="goodAnswer(1)" :class="{ 'good-answer': answers[1] }">
+            @click="goodAnswer(1)" :class="{ 'good-answer': answers[1], 'pulsating-card': answerCheck }">
             Answer 2
           </answer-card>
           <answer-card class="col-md-3 m-auto" id="2"
-            @click="goodAnswer(2)" :class="{ 'good-answer': answers[2] }">
+            @click="goodAnswer(2)" :class="{ 'good-answer': answers[2], 'pulsating-card': answerCheck }">
             Answer 3
           </answer-card>
         </div>
-        <div class="d-flex justify-content-center mt-5">
-          <answer-card class="fs-4"
-            @click="createQuestion">
+        <hr class="mt-4 custom-hr">
+        <div class="row gap-2 mt-4">
+          <answer-card class="fs-4 m-auto"
+            @click="checkInputs">
             Add Question
+          </answer-card>
+          <answer-card class="fs-4 m-auto"
+            @click="finishQuiz">
+            Finish Quest
           </answer-card>
         </div>
       </div>
@@ -65,19 +73,23 @@
 
 <script>
 import questionsTab from './questions.json';
+import quizNames from './quizNames.json'
 export default {
   props: ['currentQuizName'],
   data() {
     return {
       questionValue: '',
-      answersValue: [],
+      answersValue: ['','',''],
       answers: [
         false,
         false,
         false
       ],
       correctAnswer: '',
-      questionNr: 0
+      questionNr: 0,
+      invalidQuestion: false,
+      checkAnswersValueTab: [],
+      answerCheck: false
     };
   },
   methods: {
@@ -90,6 +102,50 @@ export default {
           this.answers[i] = false;
         }
       }
+    },
+    checkInputs() {
+      if(this.questionValue.length>0){
+        this.invalidQuestion = false;
+      }
+      let checkAnswersValue = false;
+      let badAnswers = [];
+      let checkAnswers = false;
+      this.answersValue.forEach((answer, i) => {
+        if(answer==='' || answer===null || answer===undefined){
+          this.checkAnswersValueTab[i] = true;
+          badAnswers.push(i);
+        }else{
+          this.checkAnswersValueTab[i] = false;
+        }
+      });
+      if(this.checkAnswersValueTab[0]===false && this.checkAnswersValueTab[1]===false && this.checkAnswersValueTab[2]===false){
+        checkAnswersValue = true;
+      }
+      this.answers.forEach(answer => {
+        if(answer===true){
+          checkAnswers = true;
+        }
+      });
+      if(checkAnswers===false || this.questionValue===''){
+        if(checkAnswers===false){
+          this.checkAnswerAnimation();
+        }
+        if(this.questionValue===''){
+          this.invalidQuestion = true;
+        }
+        return;
+      }
+      if(checkAnswersValue===false){
+        return;
+      }
+      this.invalidQuestion = false;
+      this.createQuestion();
+    },
+    checkAnswerAnimation(){
+      this.answerCheck = true;
+      setTimeout(() => {
+        this.answerCheck = false;
+      }, 1600);
     },
     createQuestion() {
       const question = {
@@ -105,6 +161,21 @@ export default {
       questionsTab[this.currentQuizName.newArrayNr].push(question);
       this.questionNr++;
       console.log(questionsTab);
+      this.questionValue = '';
+      this.answersValue = ['','',''];
+      this.answers = [
+        false,
+        false,
+        false
+      ];
+    },
+    finishQuiz() {
+      const tryNewQuiz = {
+        web: 'the-quiz',
+        quiz: questionsTab.length-1
+      }
+      this.$emit('backToQuiz', tryNewQuiz);
+      quizNames.push(this.currentQuizName.quizName);
     }
   },
 }
@@ -124,5 +195,26 @@ export default {
 .good-answer{
   background: #00DC82;
   color: white !important;
+}
+.invalid-input{
+  border: 3px solid #dc3545 !important;
+}
+
+@keyframes pulsating {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0,220,130,0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 30px rgba(255, 165, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 165, 0, 0);
+  }
+}
+.pulsating-card {
+  animation: pulsating 1.5s ease-out;
+}
+.custom-hr{
+  border: 2px solid #00DC82;
 }
 </style>

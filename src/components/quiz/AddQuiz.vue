@@ -3,7 +3,8 @@
     <component :is="tab"
     @changeTab="switchTab"
     @newQuizName="sendQuizName"
-    :currentQuizName="tempQuizName">
+    :currentQuizName="tempQuizName"
+    @backToQuiz="backToTheQuiz">
     </component>
   </keep-alive>
 </template>
@@ -19,7 +20,8 @@ export default {
   data() {
     return {
       tab: 'quiz-name',
-      tempQuizName: ''
+      tempQuizName: '',
+      web: ''
     };
   },
   methods: {
@@ -28,6 +30,10 @@ export default {
     },
     sendQuizName(value) {
       this.tempQuizName = value;
+    },
+    backToTheQuiz(value) {
+      this.web = (value);
+      this.$emit('backToQuiz', this.web);
     }
   },
 }

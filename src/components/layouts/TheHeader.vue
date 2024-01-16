@@ -19,16 +19,16 @@
         <ul class="navbar-nav ms-auto gap-3">
           <li class="nav-item dropdown">
             <a href="#" class="nav-link green dropdow-toggle"
-            data-bs-toggle="dropdown">
+            data-bs-toggle="dropdown" @click="updateQuizList">
               Choose Quiz
             </a>
             <ul class="dropdown-menu dropdown-menu-dark">
-              <li><a href="#" class="dropdown-item green"
-                @click="chooseQuest(0)">Quiz 1</a></li>
-              <li><a href="#" class="dropdown-item green"
-                @click="chooseQuest(1)">Quiz 2</a></li>
-              <li><a href="#" class="dropdown-item green"
-                @click="chooseQuest(2)">Mateuszowy Quiz</a></li>
+              <li v-for="(quiz, index) in quizList" :key="index">
+                <a href="#" class="dropdown-item green"
+                  @click="chooseQuest(index)">
+                  {{ quiz }}
+                </a>
+              </li>
             </ul>
           </li>
           <li class="nav-item">
@@ -42,10 +42,11 @@
 </template>
 
 <script>
+import quizNames from '../quiz/quizNames.json';
 export default {
   data() {
     return {
-
+      quizList: ['Quiz 1', 'Quiz 2', 'Mateuszowy Quiz']
     };
   },
   methods: {
@@ -54,8 +55,11 @@ export default {
     },
     switchWeb(value) {
       this.$emit('switchWeb', value);
+    },
+    updateQuizList() {
+      this.quizList = quizNames;
     }
-  }
+  },
 }
 </script>
 
