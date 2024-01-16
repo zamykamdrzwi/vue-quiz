@@ -15,11 +15,13 @@
 <script>
 import CheckAnswers from './CheckAnswers.vue';
 import TheQuiz from './TheQuiz.vue';
+import AddQuiz from './AddQuiz.vue';
 export default {
-  props: ['selectedQuizTab'],
+  props: ['selectedQuizTab', 'switchWebsite'],
   components: {
     TheQuiz,
-    CheckAnswers
+    CheckAnswers,
+    AddQuiz
   },
   data() {
     return {
@@ -38,6 +40,11 @@ export default {
         quizName: quizName,
         playerAnswers: playerAnswers
       };
+    }
+  },
+  watch: {
+    switchWebsite(){
+      this.checkSelectTab(this.switchWebsite.currentPage);
     }
   }
 }

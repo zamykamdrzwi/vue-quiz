@@ -1,7 +1,9 @@
 <template>
   <div>
-    <the-header @selectQuiz="checkSelectQuiz"></the-header>
-    <selected-tab :selectedQuizTab="selectQuizBox"></selected-tab>
+    <the-header @selectQuiz="checkSelectQuiz"
+    @switchWeb="switchPage"></the-header>
+    <selected-tab :selectedQuizTab="selectQuizBox"
+    :switchWebsite="page"></selected-tab>
   </div>
 </template>
 
@@ -15,12 +17,27 @@ export default {
   },
   data() {
     return {
-      selectQuizBox: 0 
+      selectQuizBox: 0,
+      page: {
+        currentPage: '',
+        nr: 0
+      },
+      x: 0
     };
   },
   methods: {
     checkSelectQuiz(nr){
       this.selectQuizBox = nr;
+    },
+    switchPage(value) {
+      if(this.x>=9){
+        this.x=0;
+      }
+      this.x++;
+      this.page = {
+        currentPage: value,
+        nr: this.x
+      };
     }
   }
 }

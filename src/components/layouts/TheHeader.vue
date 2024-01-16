@@ -2,7 +2,8 @@
   <nav class="navbar navbar-expand-md bg-dark">
     <div class="container">
       <div class="green fs-3">
-        <a href="#" class="nav-link">
+        <a href="#" class="nav-link"
+          @click="switchWeb('the-quiz')">
           <font-awesome-icon :icon="['far', 'circle-question']" />
           <span> QUIZ</span>
         </a>
@@ -31,7 +32,8 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link green">Add Quiz</a>
+            <a href="#" class="nav-link green"
+            @click="switchWeb('add-quiz')">Add Quiz</a>
           </li>
         </ul>
       </div>
@@ -49,6 +51,9 @@ export default {
   methods: {
     chooseQuest(nr) {
       this.$emit('selectQuiz', nr);
+    },
+    switchWeb(value) {
+      this.$emit('switchWeb', value);
     }
   }
 }
