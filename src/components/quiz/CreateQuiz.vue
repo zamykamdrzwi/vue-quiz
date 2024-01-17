@@ -1,5 +1,20 @@
 <template>
   <div>
+    <the-alert v-if="alertIsOpen">
+      <div class="m-3">
+        <div class="card-header fs-3">
+          Unfortunately an error occurred :(
+        </div>
+        <div class="card-body">
+          A quiz must contain at least one question to be added!
+        </div>
+        <div class="d-flex justify-content-center">
+          <answer-card @click="closeAlert">
+            I understand
+          </answer-card>
+        </div>
+      </div>
+    </the-alert>
     <the-card>
       <div class="card-header border-0 row">
         <span class="col-6">Question {{ questionNr+1 }}</span>
@@ -78,6 +93,7 @@ export default {
   props: ['currentQuizName'],
   data() {
     return {
+      alertIsOpen: false,
       questionValue: '',
       answersValue: ['','',''],
       answers: [
@@ -93,6 +109,9 @@ export default {
     };
   },
   methods: {
+    closeAlert() {
+      this.alertIsOpen = false;
+    },
     goodAnswer(id) {
       for(let i=0; i<=2; i++){
         if(i===id){
@@ -170,12 +189,17 @@ export default {
       ];
     },
     finishQuiz() {
-      const tryNewQuiz = {
-        web: 'the-quiz',
-        quiz: questionsTab.length-1
+      if(questionsTab[questionsTab.length-1].length>0){
+        const tryNewQuiz = {
+          web: 'the-quiz',
+          quiz: questionsTab.length-1
+        }
+        this.$emit('backToQuiz', tryNewQuiz);
+        quizNames.push(this.currentQuizName.quizName);
       }
-      this.$emit('backToQuiz', tryNewQuiz);
-      quizNames.push(this.currentQuizName.quizName);
+      else{
+        this.alertIsOpen = true;
+      }
     }
   },
 }
