@@ -45,173 +45,38 @@
   ],
   [
     {
-      "quest": "Ile procent mieszkańców Kosakowa żyje poniżej granicy ubóstwa?",
+      "quest": "Mieszkańcy miasta poruszają się autami zarejestrowanymi na:",
       "answers": [
-        "15%",
-        "30%",
-        "50%"
+        "GKS",
+        "GA",
+        "GPU"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "quest": "Są takie miejsca w Gdyni, których nazwy przenoszą nas w niezwykle egzotyczne miejsca.",
+      "answers": [
+        "Chille i Shanghaj",
+        "Bankog i Chiny",
+        "Meksyk i Pekin"
       ],
       "correctAnswer": 2
     },
     {
-      "quest": "Jakie są średnie miesięczne zarobki najbogatrzych rodzin w Kosakowie?",
+      "quest": "Gdy gdynianka / gdynianin idą do prezydium, oznacza to, że:",
       "answers": [
-        "1000 zł",
-        "1500 zł",
-        "2000 zł"
-      ],
-      "correctAnswer": 0
-    },
-    {
-      "quest": "Ile osób w Kosakowie jest bezrobotnych?",
-      "answers": [
-        "200",
-        "400",
-        "600"
+        "Idą do Urzędu Morskiego",
+        "Idą do Urzędu Miasta",
+        "Idą do Sądu Rejonowego"
       ],
       "correctAnswer": 1
     },
     {
-      "quest": "Który sektor zatrudnienia jest najbardziej dotknięty ubóstwem w Kosakowie?",
+      "quest": "Gdy kibic w Gdyni idzie spotkać się w kultowym miejscu to:",
       "answers": [
-        "Rolnictwo",
-        "Przemysł",
-        "Usługi"
-      ],
-      "correctAnswer": 1
-    },
-    {
-      "quest": "Jaki odsetek dzieci w Kosakowie korzysta z pomocy socjalnej?",
-      "answers": [
-        "20%",
-        "40%",
-        "60%"
-      ],
-      "correctAnswer": 1
-    },
-    {
-      "quest": "Ile rodzin w Kosakowie mieszka w warunkach niesprzyjających rozwojowi dzieci?",
-      "answers": [
-        "30",
-        "50",
-        "80"
-      ],
-      "correctAnswer": 1
-    },
-    {
-      "quest": "Która grupa wiekowa jest najbardziej narażona na ubóstwo w Kosakowie?",
-      "answers": [
-        "Młodzież do 18 lat",
-        "Osoby starsze powyżej 65 lat",
-        "Osoby w wieku produkcyjnym 25-54 lata"
-      ],
-      "correctAnswer": 2
-    },
-    {
-      "quest": "Ile osób starszych w Kosakowie żyje samotnie?",
-      "answers": [
-        "100",
-        "200",
-        "300"
-      ],
-      "correctAnswer": 1
-    },
-    {
-      "quest": "Które czynniki najbardziej przyczyniają się do ubóstwa wśród mieszkańców Kosakowa?",
-      "answers": [
-        "Brak edukacji",
-        "Bezrobocie",
-        "Niska płaca minimalna"
-      ],
-      "correctAnswer": 1
-    },
-    {
-      "quest": "Jaki odsetek mieszkań w Kosakowie wymaga pilnych remontów?",
-      "answers": [
-        "25%",
-        "40%",
-        "60%"
-      ],
-      "correctAnswer": 1
-    },
-    {
-      "quest": "Ile osób w Kosakowie korzysta z programów pomocy żywnościowej?",
-      "answers": [
-        "150",
-        "250",
-        "350"
-      ],
-      "correctAnswer": 1
-    },
-    {
-      "quest": "Jaka jest przeciętna długość bezrobocia wśród mieszkańców Kosakowa?",
-      "answers": [
-        "6 miesięcy",
-        "12 miesięcy",
-        "24 miesiące"
-      ],
-      "correctAnswer": 2
-    },
-    {
-      "quest": "Ile rodzin w Kosakowie nie ma stałego dostępu do opieki zdrowotnej?",
-      "answers": [
-        "30",
-        "60",
-        "90"
-      ],
-      "correctAnswer": 1
-    },
-    {
-      "quest": "Które wsparcie społeczne jest najbardziej potrzebne dla mieszkańców Kosakowa?",
-      "answers": [
-        "Dom pomocy społecznej",
-        "Przedszkola publiczne",
-        "Poradnictwo zawodowe"
-      ],
-      "correctAnswer": 0
-    },
-    {
-      "quest": "Ile osób w Kosakowie mieszka w budynkach bez dostępu do bieżącej wody?",
-      "answers": [
-        "50",
-        "100",
-        "150"
-      ],
-      "correctAnswer": 1
-    },
-    {
-      "quest": "Która grupa społeczna w Kosakowie jest najbardziej narażona na wykluczenie społeczne?",
-      "answers": [
-        "Osoby niepełnosprawne",
-        "Młodzi bezrobotni",
-        "Samotne matki"
-      ],
-      "correctAnswer": 0
-    },
-    {
-      "quest": "Jaka jest średnia wieku mieszkańców Kosakowa?",
-      "answers": [
-        "35 lat",
-        "45 lat",
-        "55 lat"
-      ],
-      "correctAnswer": 1
-    },
-    {
-      "quest": "Ile dzieci w Kosakowie nie ma dostępu do edukacji?",
-      "answers": [
-        "10",
-        "20",
-        "30"
-      ],
-      "correctAnswer": 1
-    },
-    {
-      "quest": "Które instytucje oferują wsparcie dla bezdomnych w Kosakowie?",
-      "answers": [
-        "Bank żywności",
-        "Schronisko dla bezdomnych",
-        "Dom Kultury"
+        "Wędruje na legendarną „Polanę”",
+        "Wędruje na legendarną „Górkę”",
+        "Wędruje na bulwar Nadmorski"
       ],
       "correctAnswer": 1
     }
